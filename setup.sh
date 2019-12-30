@@ -1,3 +1,13 @@
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+echo ${machine}
+
 # install homebrew
 echo "\e[92mInstalling Homebrew\e[39m"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -17,4 +27,5 @@ echo "\e[92mMake Dev Folder\e[39m"
 mkdir ~/Development
 # echo "\e[92mInstall Flutter\e[39m"
 # git clone https://github.com/flutter/flutter.git ~/Development
+# https://flutter.dev/docs/get-started/install/macos#update-your-path
 # export PATH="$PATH:`~/Development/flutter/bin"
