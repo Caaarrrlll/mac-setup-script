@@ -31,9 +31,10 @@ case "${machine}" in
         echo "\e[92mMake Dev Folder\e[39m"
         mkdir ~/Development
         echo "\e[92mInstall Flutter\e[39m"
-        git clone https://github.com/flutter/flutter.git ~/Development ;
-        #https://flutter.dev/docs/get-started/install/macos#update-your-path
-        # export PATH="$PATH:`~/Development/flutter/bin";
+        git clone https://github.com/flutter/flutter.git ~/Development
+        cd flutter
+        git checkout stable
+        sed  '/export PATH="$PATH:`~/Development/flutter/bin"' ./zshrc
 esac
 
 
