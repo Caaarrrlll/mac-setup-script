@@ -8,4 +8,6 @@
 - wget
 - NodeJS & npm
 - Angular & Nest Cli's
-- Python
+
+## NB 
+- Python (Needs to be tested)
