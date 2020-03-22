@@ -20,17 +20,26 @@ case "${machine}" in
         # git is installed on catalina
         # echo "\e[92mInstalling Git\e[39m"
         # brew install git
+        sed -i '' 's/plugins=(/plugins=(git osx /' ~/.zshrc
 
         # Install wget for use
         echo "\e[92mInstalling wget\e[39m"
         brew install wget
 
+        echo "\e[92mInstalling nvm\e[39m"
+        wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+        . ~/.zshrc
+        # install node v10 & 12 latest latest
+        nvm install nvm install --lts=dubnium
+        nvm install nvm install --lts=erbium
+        nvm use --lts
+
         echo "\e[92mInstalling oh-my-zsh\e[39m"
         sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
         git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-        sed 's/plugins=(/plugins=(zsh-autosuggestions '
-        sed 's/plugins=(/plugins=(zsh-syntax-highlighting '
+        sed -i '' 's/plugins=(/plugins=(zsh-autosuggestions /' ~/.zshrc
+        sed -i '' 's/plugins=(/plugins=(zsh-syntax-highlighting /' ~/.zshrc
         # echo "\e[92mInstalling nvm (Node Version Manager)\e[39m"
 
         echo "\n[92mInstalling Latex for use with VS Code"
