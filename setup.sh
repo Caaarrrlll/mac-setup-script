@@ -22,8 +22,10 @@ case "${machine}" in
         brew install wget
         echo "\e[92mInstalling oh-my-zsh\e[39m"
         sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-        echo "\e[92mInstalling NodeJS\e[39m"
-        brew install node
+        # 2 very useful addons
+        git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+        # echo "\e[92mInstalling nvm (Node Version Manager)\e[39m"
         echo "\e[92mInstalling Angular & NestJS CLI\e[39m"
         npm install -g @angular/cli @nestjs/cli firebase-tools
         echo "\e[92mInstalling Python\e[39m"
