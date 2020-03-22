@@ -1,3 +1,6 @@
 // VS Code config
 // # Preferences
     "terminal.integrated.fontFamily": "Meslo LG M DZ for Powerline"
+
+// Command Pallet
+ext install latex-workshop
