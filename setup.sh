@@ -16,8 +16,8 @@ case "${machine}" in
         # install homebrew
         echo "\e[92mInstalling Homebrew\e[39m"
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        echo "\e[92mInstalling Git\e[39m"
-        brew install git
+        # echo "\e[92mInstalling Git\e[39m"
+        # brew install git
         echo "\e[92mInstalling wget\e[39m"
         brew install wget
         echo "\e[92mInstalling oh-my-zsh\e[39m"
@@ -28,7 +28,7 @@ case "${machine}" in
         # echo "\e[92mInstalling nvm (Node Version Manager)\e[39m"
         echo "\e[92mInstalling Angular & NestJS CLI\e[39m"
         npm install -g @angular/cli @nestjs/cli firebase-tools
-        echo "\e[92mInstalling Python\e[39m"
+        # echo "\e[92mInstalling Python\e[39m"
         # Test this
         # sed  '/export PATH="//usr/local/opt/python/libexec/bin:' ./zshrc
         # brew install python
