@@ -40,17 +40,25 @@ case "${machine}" in
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
         sed -i '' 's/plugins=(/plugins=(zsh-autosuggestions /' ~/.zshrc
         sed -i '' 's/plugins=(/plugins=(zsh-syntax-highlighting /' ~/.zshrc
-        # echo "\e[92mInstalling nvm (Node Version Manager)\e[39m"
+       
+        echo "\e[92mInstalling Powerline Fonts\e[39m"
+        git clone https://github.com/powerline/fonts.git ~/Downloads/fonts --depth=1
+        cd ~/Downloads/fonts
+        sudo ./install.sh
+        cd ..
+        rm -rf fonts
 
-        echo "\n[92mInstalling Latex for use with VS Code"
-        brew cask install mactex-no-gui
-        # test if this works in shell
-        . ~/.zshrc
-        sudo tlmgr update --self && sudo tlmgr update --all
+        # echo "\n[92mInstalling Latex for use with VS Code"
+        # brew cask install mactex-no-gui
+        # # test if this works in shell
+        # . ~/.zshrc
+        # sudo tlmgr update --self && sudo tlmgr update --all
 
-        echo "\e[92mInstalling Angular & NestJS CLI\e[39m"
-        npm install -g @angular/cli @nestjs/cli firebase-tools
+        echo "\e[92mInstalling Angular, NestJS CLI, Firebase-Tools, Ionic\e[39m"
+        npm install -g @angular/cli @nestjs/cli firebase-tools @ionic/cli
 
+        echo "\e[92mInstalling XCode command line tools\e[39m"
+        xcode-select --install
         # echo "\e[92mInstalling Python\e[39m"
         # Test this
         # sed  '/export PATH="//usr/local/opt/python/libexec/bin:' ./zshrc
