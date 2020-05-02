@@ -12,7 +12,7 @@ case "${machine}" in
     Cygwin*)  echo "Not setup for windows";;
     MinGw*) echo "Not setup for windows";;
     Linux*) echo "If you dont have zsh installed cancel now";;
-    Darwin*) echo "macOS setup script"; 
+    Mac*) echo "macOS setup script"; 
         # install homebrew
         echo "\e[92mInstalling Homebrew\e[39m"
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -20,19 +20,23 @@ case "${machine}" in
         # git is installed on catalina
         # echo "\e[92mInstalling Git\e[39m"
         # brew install git
-        sed -i '' 's/plugins=(/plugins=(git osx /' ~/.zshrc
+        sed -i '' 's/plugins=(/plugins=(git /' ~/.zshrc
+        sed -i '' 's/plugins=(/plugins=(osx /' ~/.zshrc
 
         # Install wget for use
         echo "\e[92mInstalling wget\e[39m"
         brew install wget
+        source ~/.zshrc
 
         echo "\e[92mInstalling nvm\e[39m"
         wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-        . ~/.zshrc
-        # install node v10 & 12 latest latest
-        nvm install nvm install --lts=dubnium
-        nvm install nvm install --lts=erbium
+        source ~/.zshrc
+
+        # install node v10 & v12 latest latest
+        nvm install --lts=dubnium
+        nvm install --lts=erbium
         nvm use --lts
+        source ~/.zshrc
 
         echo "\e[92mInstalling oh-my-zsh\e[39m"
         sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -40,6 +44,8 @@ case "${machine}" in
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
         sed -i '' 's/plugins=(/plugins=(zsh-autosuggestions /' ~/.zshrc
         sed -i '' 's/plugins=(/plugins=(zsh-syntax-highlighting /' ~/.zshrc
+        #set agnoster theme comment out if you want default
+        sed -i '' 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' ~/.zshrc
        
         echo "\e[92mInstalling Powerline Fonts\e[39m"
         git clone https://github.com/powerline/fonts.git ~/Downloads/fonts --depth=1
@@ -76,7 +82,3 @@ case "${machine}" in
         . ~/.zshrc
         cd ~/
 esac
-
-
-
-
