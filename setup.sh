@@ -30,6 +30,11 @@ case "${machine}" in
         nvm use --lts
         source ~/.zshrc
 
+        echo "\e[92mInstalling Angular, NestJS CLI, Firebase-Tools, Ionic\e[39m"
+        npm install -g @angular/cli @nestjs/cli firebase-tools @ionic/cli
+
+        
+
     Mac*) echo "macOS setup script"; 
         # install homebrew
         echo "\e[92mInstalling Homebrew\e[39m"
