@@ -11,7 +11,25 @@ echo ${machine}
 case "${machine}" in
     Cygwin*)  echo "Not setup for windows";;
     MinGw*) echo "Not setup for windows";;
-    Linux*) echo "If you dont have zsh installed cancel now";;
+    Linux*) echo "This will only work on systems that use aptitude!!!";
+        sudo apt-get install zsh git
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+        sed -i 's/plugins=(/plugins=(zsh-autosuggestions /' ~/.zshrc
+        sed -i 's/plugins=(/plugins=(zsh-syntax-highlighting /' ~/.zshrc
+        # Set theme to agnoster
+        sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' ~/.zshrc
+        sed -i '$ a export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"' ~/.zshrc
+        sed -i '$ a [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' ~/.zshrc
+        source ~/.zshrc
+
+        # install node v10 & v12 latest latest
+        nvm install --lts=dubnium
+        nvm install --lts=erbium
+        nvm use --lts
+        source ~/.zshrc
+
     Mac*) echo "macOS setup script"; 
         # install homebrew
         echo "\e[92mInstalling Homebrew\e[39m"
