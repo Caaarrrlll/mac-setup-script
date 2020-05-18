@@ -8,7 +8,7 @@ case "${unameOut}" in
 esac
 echo ${machine}
 
-case "${machine}" in
+case ${machine} in
     Cygwin*)  echo "Not setup for windows";;
     MinGw*) echo "Not setup for windows";;
     Linux*) echo "This will only work on systems that use aptitude!!!";
@@ -31,14 +31,15 @@ case "${machine}" in
         source ~/.zshrc
 
         echo "\e[92mInstalling Angular, NestJS CLI, Firebase-Tools, Ionic\e[39m"
-        npm install -g @angular/cli @nestjs/cli firebase-tools @ionic/cli
+        npm install -g @angular/cli @nestjs/cli firebase-tools @ionic/cli;;
 
-        
-
-    Mac*) echo "macOS setup script"; 
+    Mac*) echo "macOS setup script"
         # install homebrew
         echo "\e[92mInstalling Homebrew\e[39m"
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        brew doctor
+        brew install zsh
+        sudo sh -c "echo $(which zsh) >> /etc/shells" && chsh -s $(which zsh)
 
         # git is installed on catalina
         # echo "\e[92mInstalling Git\e[39m"
@@ -78,10 +79,10 @@ case "${machine}" in
         rm -rf fonts
 
         # echo "\n[92mInstalling Latex for use with VS Code"
-        # brew cask install mactex-no-gui
-        # # test if this works in shell
-        # . ~/.zshrc
-        # sudo tlmgr update --self && sudo tlmgr update --all
+        brew cask install mactex-no-gui
+        # test if this works in shell
+        . ~/.zshrc
+        sudo tlmgr update --self && sudo tlmgr update --all
 
         echo "\e[92mInstalling Angular, NestJS CLI, Firebase-Tools, Ionic\e[39m"
         npm install -g @angular/cli @nestjs/cli firebase-tools @ionic/cli
@@ -101,7 +102,7 @@ case "${machine}" in
         git clone https://github.com/flutter/flutter.git ~/Development/flutter
         cd ~/Development/flutter
         git checkout stable
-        echo '\nexport PATH=$PATH:~/Development/flutter/bin' >> ~/.zshrc
+        echo 'export PATH=$PATH:~/Development/flutter/bin' >> ~/.zshrc
         . ~/.zshrc
         cd ~/
 esac
