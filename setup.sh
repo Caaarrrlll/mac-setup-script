@@ -7,7 +7,7 @@ case "${unameOut}" in
     *)          machine="UNKNOWN:${unameOut}"
 esac
 echo ${machine}
-
+#########################################################################################################################################################
 case ${machine} in
     Cygwin*)  echo "Not setup for windows";;
     MinGw*) echo "Not setup for windows";;
@@ -32,7 +32,7 @@ case ${machine} in
 
         echo "\e[92mInstalling Angular, NestJS CLI, Firebase-Tools, Ionic\e[39m"
         npm install -g @angular/cli @nestjs/cli firebase-tools @ionic/cli;;
-
+#########################################################################################################################################################
     Mac*) echo "macOS setup script"
         # install homebrew
         echo "\e[92mInstalling Homebrew\e[39m"
@@ -105,4 +105,11 @@ case ${machine} in
         echo 'export PATH=$PATH:~/Development/flutter/bin' >> ~/.zshrc
         . ~/.zshrc
         cd ~/
+
+        brew tap homebrew/cask-fonts
+        brew cask install font-fira-code
+
+        #Installing java
+        brew tap AdoptOpenJDK/openjdk
+        brew cask install adoptopenjdk8
 esac
