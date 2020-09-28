@@ -85,7 +85,7 @@ case ${machine} in
         sudo tlmgr update --self && sudo tlmgr update --all
 
         echo "\e[92mInstalling Angular, NestJS CLI, Firebase-Tools, Ionic\e[39m"
-        npm install -g @angular/cli @nestjs/cli firebase-tools @ionic/cli
+        npm install -g @angular/cli @nestjs/cli firebase-tools @ionic/cli serve
 
         echo "\e[92mInstalling XCode command line tools\e[39m"
         xcode-select --install
@@ -112,4 +112,5 @@ case ${machine} in
         #Installing java
         brew tap AdoptOpenJDK/openjdk
         brew cask install adoptopenjdk8
+        brew cask install adoptopenjdk13
 esac
