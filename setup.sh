@@ -113,4 +113,7 @@ case ${machine} in
         brew tap AdoptOpenJDK/openjdk
         brew install --cask adoptopenjdk8
         brew install --cask adoptopenjdk13
+
+        #Quality of Life installations uncomment the ones you want to install
+        # brew install --cask stats
 esac
