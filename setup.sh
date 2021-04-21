@@ -79,10 +79,10 @@ case ${machine} in
         rm -rf fonts
 
         # echo "\n[92mInstalling Latex for use with VS Code"
-        brew cask install mactex-no-gui
+        # brew install --cask mactex-no-gui
         # test if this works in shell
-        . ~/.zshrc
-        sudo tlmgr update --self && sudo tlmgr update --all
+        # . ~/.zshrc
+        # sudo tlmgr update --self && sudo tlmgr update --all
 
         echo "\e[92mInstalling Angular, NestJS CLI, Firebase-Tools, Ionic\e[39m"
         npm install -g @angular/cli @nestjs/cli firebase-tools @ionic/cli serve
@@ -107,10 +107,10 @@ case ${machine} in
         cd ~/
 
         brew tap homebrew/cask-fonts
-        brew cask install font-fira-code
+        brew install --cask font-fira-code
 
         #Installing java
         brew tap AdoptOpenJDK/openjdk
-        brew cask install adoptopenjdk8
-        brew cask install adoptopenjdk13
+        brew install --cask adoptopenjdk8
+        brew install --cask adoptopenjdk13
 esac
