@@ -52,6 +52,14 @@ case ${machine} in
         brew install wget
         source ~/.zshrc
 
+        # Install 7Zip for mac
+        brew install p7zip
+
+        # Download and install postman
+        curl https://dl.pstmn.io/download/latest/osx -o ~/Downloads/Postman-mac.zip
+        unzip ~/Downloads/Postman-mac.zip -d ~/Downloads
+        mv ~/Downloads/Postman.app ~/Applications
+
         echo "\e[92mInstalling nvm\e[39m"
         wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
         source ~/.zshrc
@@ -113,6 +121,8 @@ case ${machine} in
         brew tap AdoptOpenJDK/openjdk
         brew install --cask adoptopenjdk8
         brew install --cask adoptopenjdk13
+
+
 
         #Quality of Life installations uncomment the ones you want to install
         # brew install --cask stats
