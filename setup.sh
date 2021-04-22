@@ -30,25 +30,25 @@ case ${machine} in
         nvm use --lts
         source ~/.zshrc
 
-        echo "\e[92mInstalling Angular, NestJS CLI, Firebase-Tools, Ionic\e[39m"
+        echo "\033[0;31m Installing Angular, NestJS CLI, Firebase-Tools, Ionic\033[0m"
         npm install -g @angular/cli @nestjs/cli firebase-tools @ionic/cli;;
 #########################################################################################################################################################
     Mac*) echo "macOS setup script"
         # install homebrew
-        echo "\e[92mInstalling Homebrew\e[39m"
+        echo "\033[0;31m Installing Homebrew \033[0m"
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         brew doctor
         brew install zsh
         sudo sh -c "echo $(which zsh) >> /etc/shells" && chsh -s $(which zsh)
 
         # git is installed on catalina
-        # echo "\e[92mInstalling Git\e[39m"
+        # echo "\033[0;31m Installing Git\033[0m"
         # brew install git
         sed -i '' 's/plugins=(/plugins=(git /' ~/.zshrc
         sed -i '' 's/plugins=(/plugins=(osx /' ~/.zshrc
 
         # Install wget for use
-        echo "\e[92mInstalling wget\e[39m"
+        echo "\033[0;31m Installing wget\033[0m"
         brew install wget
         source ~/.zshrc
 
@@ -60,7 +60,7 @@ case ${machine} in
         unzip ~/Downloads/Postman-mac.zip -d ~/Downloads
         mv ~/Downloads/Postman.app ~/Applications
 
-        echo "\e[92mInstalling nvm\e[39m"
+        echo "\033[0;31m Installing nvm\033[0m"
         wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
         source ~/.zshrc
 
@@ -70,7 +70,7 @@ case ${machine} in
         nvm use --lts
         source ~/.zshrc
 
-        echo "\e[92mInstalling oh-my-zsh\e[39m"
+        echo "\033[0;31m Installing oh-my-zsh\033[0m"
         sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
         git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
@@ -79,7 +79,7 @@ case ${machine} in
         #set agnoster theme comment out if you want default
         sed -i '' 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' ~/.zshrc
        
-        echo "\e[92mInstalling Powerline Fonts\e[39m"
+        echo "\033[0;31m Installing Powerline Fonts\033[0m"
         git clone https://github.com/powerline/fonts.git ~/Downloads/fonts --depth=1
         cd ~/Downloads/fonts
         sudo ./install.sh
@@ -92,21 +92,21 @@ case ${machine} in
         # . ~/.zshrc
         # sudo tlmgr update --self && sudo tlmgr update --all
 
-        echo "\e[92mInstalling Angular, NestJS CLI, Firebase-Tools, Ionic\e[39m"
+        echo "\033[0;31m Installing Angular, NestJS CLI, Firebase-Tools, Ionic\033[0m"
         npm install -g @angular/cli @nestjs/cli firebase-tools @ionic/cli serve
 
-        echo "\e[92mInstalling XCode command line tools\e[39m"
+        echo "\033[0;31m Installing XCode command line tools\033[0m"
         xcode-select --install
-        # echo "\e[92mInstalling Python\e[39m"
+        # echo "\033[0;31m Installing Python\033[0m"
         # Test this
         # sed  '/export PATH="//usr/local/opt/python/libexec/bin:' ./zshrc
         # brew install python
 
-        echo "\e[92mMake Dev Folder\e[39m"
+        echo "\033[0;31m Make Dev Folder\033[0m"
         mkdir ~/Development
 
         # Flutter
-        echo "\e[92mInstall Flutter\e[39m"
+        echo "\033[0;31m Install Flutter\033[0m"
         git clone https://github.com/flutter/flutter.git ~/Development/flutter
         cd ~/Development/flutter
         git checkout stable
