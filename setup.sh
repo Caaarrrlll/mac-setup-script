@@ -60,6 +60,8 @@ case ${machine} in
         unzip ~/Downloads/Postman-mac.zip -d ~/Downloads
         mv ~/Downloads/Postman.app ~/Applications
 
+        # curl https://download.mozilla.org/\?product=firefox-latest-ssl\&os=osx\&lang=en-US -o ~/Downloads/Firefox-mac.dmg
+
         echo "\033[0;31m Installing nvm\033[0m"
         wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
         source ~/.zshrc
