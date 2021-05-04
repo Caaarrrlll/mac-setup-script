@@ -50,7 +50,7 @@ case ${machine} in
         # Install wget for use
         echo "\033[0;31m Installing wget\033[0m"
         brew install wget
-        source ~/.zshrc
+        . ~/.zshrc
 
         # Install 7Zip for mac
         brew install p7zip
@@ -64,13 +64,13 @@ case ${machine} in
 
         echo "\033[0;31m Installing nvm\033[0m"
         wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-        source ~/.zshrc
+        . ~/.zshrc
 
         # install node v10 & v12 latest latest
         nvm install --lts=dubnium
         nvm install --lts=erbium
         nvm use --lts
-        source ~/.zshrc
+        . ~/.zshrc
 
         echo "\033[0;31m Installing oh-my-zsh\033[0m"
         sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -121,8 +121,8 @@ case ${machine} in
 
         #Installing java
         brew tap AdoptOpenJDK/openjdk
-        brew install --cask adoptopenjdk8
-        brew install --cask adoptopenjdk13
+        # brew install --cask adoptopenjdk8
+        brew install --cask adoptopenjdk15-openj9
 
 
 
