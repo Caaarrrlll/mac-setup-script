@@ -80,7 +80,7 @@ case ${machine} in
         sed -i '' 's/plugins=(/plugins=(zsh-syntax-highlighting /' ~/.zshrc
         #set agnoster theme comment out if you want default
         sed -i '' 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' ~/.zshrc
-       
+        
         echo "\033[0;31m Installing Powerline Fonts\033[0m"
         git clone https://github.com/powerline/fonts.git ~/Downloads/fonts --depth=1
         cd ~/Downloads/fonts
@@ -124,8 +124,6 @@ case ${machine} in
         # brew install --cask adoptopenjdk8
         brew install --cask adoptopenjdk15-openj9
 
-
-
         #Quality of Life installations uncomment the ones you want to install
-        # brew install --cask stats
+        brew install --cask stats
 esac
