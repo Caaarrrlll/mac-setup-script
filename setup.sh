@@ -138,4 +138,7 @@ case ${machine} in
         curl -L https://go.microsoft.com/fwlink/?linkid=2176807 -o ~/Downloads/Azure-Data-Studio.zip
         unzip ~/Downloads/Azure-Data-Studio.zip -d ~/Downloads
         mv ~/Downloads/Azure\ Data\ Studio.app ~/Applications
+
+        echo "\033[0;31m Install DotNet\033[0m"
+        sh -c "$(wget -O- https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh)"
 esac
