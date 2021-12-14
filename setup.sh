@@ -141,4 +141,6 @@ case ${machine} in
 
         echo "\033[0;31m Install DotNet\033[0m"
         sh -c "$(wget -O- https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh)"
+        echo 'export PATH="/usr/local/share/dotnet:$PATH"' >> ~/.zshrc
+        echo 'export PATH="$PATH:$HOME/.dotnet/tools/"' >> ~/.zshrc
 esac
