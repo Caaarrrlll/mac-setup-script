@@ -63,17 +63,17 @@ case ${machine} in
         # curl https://download.mozilla.org/\?product=firefox-latest-ssl\&os=osx\&lang=en-US -o ~/Downloads/Firefox-mac.dmg
 
         echo "\033[0;31m Installing nvm\033[0m"
-        wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+        wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
         . ~/.zshrc
 
         # install node v10 & v12 latest latest
         nvm install --lts=dubnium
-        nvm install --lts=erbium
+        nvm install --lts=erbiumx
         nvm use --lts
         . ~/.zshrc
 
         echo "\033[0;31m Installing oh-my-zsh\033[0m"
-        sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        # sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
         git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
         sed -i '' 's/plugins=(/plugins=(zsh-autosuggestions /' ~/.zshrc
