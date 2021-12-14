@@ -34,28 +34,29 @@ case ${machine} in
         npm install -g @angular/cli @nestjs/cli firebase-tools @ionic/cli;;
 #########################################################################################################################################################
     Mac*) echo "macOS setup script"
-        # install homebrew
+        ## install homebrew
         echo "\033[0;31m Installing Homebrew \033[0m"
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         brew doctor
-        brew install zsh
-        sudo sh -c "echo $(which zsh) >> /etc/shells" && chsh -s $(which zsh)
+        ## ZSH no longer needs to be installed
+        # brew install zsh
+        # sudo sh -c "echo $(which zsh) >> /etc/shells" && chsh -s $(which zsh)
 
-        # git is installed on catalina
+        ## git is installed on catalina
         # echo "\033[0;31m Installing Git\033[0m"
         # brew install git
         sed -i '' 's/plugins=(/plugins=(git /' ~/.zshrc
         sed -i '' 's/plugins=(/plugins=(osx /' ~/.zshrc
 
-        # Install wget for use
+        ## Install wget for use
         echo "\033[0;31m Installing wget\033[0m"
         brew install wget
         . ~/.zshrc
 
-        # Install 7Zip for mac
+        ## Install 7Zip for mac
         brew install p7zip
 
-        # Download and install postman
+        ## Download and install postman
         curl https://dl.pstmn.io/download/latest/osx -o ~/Downloads/Postman-mac.zip
         unzip ~/Downloads/Postman-mac.zip -d ~/Downloads
         mv ~/Downloads/Postman.app ~/Applications
@@ -66,14 +67,15 @@ case ${machine} in
         wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
         . ~/.zshrc
 
-        # install node v10 & v12 latest latest
-        nvm install --lts=dubnium
-        nvm install --lts=erbiumx
+        ## install node v10 & v12 latest latest
+        # nvm install --lts=dubnium
+        # nvm install --lts=erbiumx
+        nvm install --lts=fermium
         nvm use --lts
         . ~/.zshrc
 
         echo "\033[0;31m Installing oh-my-zsh\033[0m"
-        # sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
         git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
         sed -i '' 's/plugins=(/plugins=(zsh-autosuggestions /' ~/.zshrc
@@ -120,10 +122,20 @@ case ${machine} in
         brew install --cask font-fira-code
 
         #Installing java
-        brew tap AdoptOpenJDK/openjdk
+        # brew tap AdoptOpenJDK/openjdk
         # brew install --cask adoptopenjdk8
-        brew install --cask adoptopenjdk15-openj9
+        # brew install --cask adoptopenjdk15-openj9
 
         #Quality of Life installations uncomment the ones you want to install
         brew install --cask stats
+
+        echo "\033[0;31m Install VS Code\033[0m"
+        curl -L https://code.visualstudio.com/sha/download\?build\=stable\&os\=darwin-universal -o ~/Downloads/VSCode-darwin-universal.zip
+        unzip ~/Downloads/VSCode-darwin-universal.zip -d ~/Downloads
+        mv ~/Downloads/Visual\ Studio\ Code.app ~/Applications
+
+        echo "\033[0;31m Install Azure Data Studio\033[0m"
+        curl -L https://go.microsoft.com/fwlink/?linkid=2176807 -o ~/Downloads/Azure-Data-Studio.zip
+        unzip ~/Downloads/Azure-Data-Studio.zip -d ~/Downloads
+        mv ~/Downloads/Azure\ Data\ Studio.app ~/Applications
 esac
