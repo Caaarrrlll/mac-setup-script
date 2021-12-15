@@ -34,21 +34,15 @@ case ${machine} in
         npm install -g @angular/cli @nestjs/cli firebase-tools @ionic/cli;;
 #########################################################################################################################################################
     Mac*) echo "macOS setup script"
-        ## install homebrew
+        # install homebrew
         echo "\033[0;31m Installing Homebrew \033[0m"
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         brew doctor
-        ## ZSH no longer needs to be installed
-        # brew install zsh
-        # sudo sh -c "echo $(which zsh) >> /etc/shells" && chsh -s $(which zsh)
 
-        ## git is installed on catalina
-        # echo "\033[0;31m Installing Git\033[0m"
-        # brew install git
         sed -i '' 's/plugins=(/plugins=(git /' ~/.zshrc
         sed -i '' 's/plugins=(/plugins=(osx /' ~/.zshrc
 
-        ## Install wget for use
+        # Install wget for use
         echo "\033[0;31m Installing wget\033[0m"
         brew install wget
         . ~/.zshrc
@@ -61,14 +55,11 @@ case ${machine} in
         unzip ~/Downloads/Postman-mac.zip -d ~/Downloads
         mv ~/Downloads/Postman.app ~/Applications
 
-        # curl https://download.mozilla.org/\?product=firefox-latest-ssl\&os=osx\&lang=en-US -o ~/Downloads/Firefox-mac.dmg
-
         echo "\033[0;31m Installing nvm\033[0m"
         wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
         . ~/.zshrc
 
-        ## install node v10 & v12 latest latest
-        # nvm install --lts=dubnium
+        ## install node v14 latest latest
         # nvm install --lts=erbiumx
         nvm install --lts=fermium
         nvm use --lts
@@ -97,20 +88,19 @@ case ${machine} in
         # sudo tlmgr update --self && sudo tlmgr update --all
 
         echo "\033[0;31m Installing Angular, NestJS CLI, Firebase-Tools, Ionic\033[0m"
-        npm install -g @angular/cli @nestjs/cli firebase-tools @ionic/cli serve
+        npm install -g @angular/cli @nestjs/cli serve
+        # npm i -g firebase-tools @ionic/cli
 
         echo "\033[0;31m Installing XCode command line tools\033[0m"
         xcode-select --install
-        # echo "\033[0;31m Installing Python\033[0m"
-        # Test this
-        # sed  '/export PATH="//usr/local/opt/python/libexec/bin:' ./zshrc
-        # brew install python
 
-        echo "\033[0;31m Make Dev Folder\033[0m"
-        mkdir ~/Development
+        # echo "\033[0;31m Installing Python\033[0m"
+        brew install python
+        echo 'export PATH="/usr/local/opt/python/libexec/bin:$PATH"' >> ~/.zshrc
 
         # Flutter
         echo "\033[0;31m Install Flutter\033[0m"
+        mkdir ~/Development
         git clone https://github.com/flutter/flutter.git ~/Development/flutter
         cd ~/Development/flutter
         git checkout stable
