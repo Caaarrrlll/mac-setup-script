@@ -88,7 +88,7 @@ case ${machine} in
         # sudo tlmgr update --self && sudo tlmgr update --all
 
         echo "\033[0;31m Installing Angular, NestJS CLI, Firebase-Tools, Ionic\033[0m"
-        npm install -g @angular/cli @nestjs/cli serve
+        npm install -g @angular/cli @nestjs/cli serve strapi
         # npm i -g firebase-tools @ionic/cli
 
         echo "\033[0;31m Installing XCode command line tools\033[0m"
