@@ -129,8 +129,10 @@ case ${machine} in
         unzip ~/Downloads/Azure-Data-Studio.zip -d ~/Downloads
         mv ~/Downloads/Azure\ Data\ Studio.app ~/Applications
 
-        echo "\033[0;31m Install DotNet\033[0m"
-        sh -c "$(wget -O- https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh)"
-        echo 'export PATH="/usr/local/share/dotnet:$PATH"' >> ~/.zshrc
-        echo 'export PATH="$PATH:$HOME/.dotnet/tools/"' >> ~/.zshrc
+        # Does not work as expected find better way to install dotnet
+        # echo "\033[0;31m Install DotNet\033[0m"
+        # sh -c "$(wget -O- https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh)"
+        # echo 'export PATH="/usr/local/share/dotnet:$PATH"' >> ~/.zshrc
+        # echo 'export PATH="$PATH:$HOME/.dotnet/tools/"' >> ~/.zshrc
+        dotnet tool install --global dotnet-ef
 esac
