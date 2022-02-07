@@ -39,12 +39,21 @@ case ${machine} in
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         brew doctor
 
-        sed -i '' 's/plugins=(/plugins=(git /' ~/.zshrc
-        sed -i '' 's/plugins=(/plugins=(osx /' ~/.zshrc
-
         # Install wget for use
         echo "\033[0;31m Installing wget\033[0m"
         brew install wget
+
+        echo "\033[0;31m Installing oh-my-zsh\033[0m"
+        sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+        sed -i '' 's/plugins=(/plugins=(zsh-autosuggestions /' ~/.zshrc
+        sed -i '' 's/plugins=(/plugins=(zsh-syntax-highlighting /' ~/.zshrc
+        #set agnoster theme comment out if you want default
+        sed -i '' 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' ~/.zshrc
+
+        sed -i '' 's/plugins=(/plugins=(git /' ~/.zshrc
+        sed -i '' 's/plugins=(/plugins=(macos /' ~/.zshrc
         . ~/.zshrc
 
         ## Install 7Zip for mac
@@ -65,15 +74,6 @@ case ${machine} in
         nvm use --lts
         . ~/.zshrc
 
-        echo "\033[0;31m Installing oh-my-zsh\033[0m"
-        sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-        git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-        sed -i '' 's/plugins=(/plugins=(zsh-autosuggestions /' ~/.zshrc
-        sed -i '' 's/plugins=(/plugins=(zsh-syntax-highlighting /' ~/.zshrc
-        #set agnoster theme comment out if you want default
-        sed -i '' 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' ~/.zshrc
-        
         echo "\033[0;31m Installing Powerline Fonts\033[0m"
         git clone https://github.com/powerline/fonts.git ~/Downloads/fonts --depth=1
         cd ~/Downloads/fonts
