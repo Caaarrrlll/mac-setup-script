@@ -106,6 +106,10 @@ case ${machine} in
         git checkout stable
         echo 'export FLUTTER_DIR="$HOME/Software/flutter/bin"' >> ~/.zshrc
         echo 'export PATH="$PATH:$FLUTTER_DIR"' >> ~/.zshrc
+		echo 'export ANDROID_HOME="$HOME/Library/Android/sdk"' >> ~/.zshrc
+		# may be deprecated 
+		# export PATH $PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+		echo 'export PATH $PATH:$ANDROID_HOME/platform-tools' >> ~/.zshrc
         source $HOME/.zshrc
         cd ~/
 
