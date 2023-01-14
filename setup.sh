@@ -36,7 +36,7 @@ case ${machine} in
     Mac*) echo "macOS setup script"
         # install homebrew
         echo "\033[0;31m Installing Homebrew \033[0m"
-        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         brew doctor
 
         # Install wget for use
@@ -54,7 +54,7 @@ case ${machine} in
 
         sed -i '' 's/plugins=(/plugins=(git /' ~/.zshrc
         sed -i '' 's/plugins=(/plugins=(macos /' ~/.zshrc
-        . ~/.zshrc
+        source $HOME/.zshrc
 
         ## Install 7Zip for mac
         brew install p7zip
@@ -66,13 +66,13 @@ case ${machine} in
 
         echo "\033[0;31m Installing nvm\033[0m"
         wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-        . ~/.zshrc
+        source $HOME/.zshrc
 
         ## install node v14 latest latest
         # nvm install --lts=erbiumx
         nvm install --lts=fermium
         nvm use --lts
-        . ~/.zshrc
+        source $HOME/.zshrc
 
         echo "\033[0;31m Installing Powerline Fonts\033[0m"
         git clone https://github.com/powerline/fonts.git ~/Downloads/fonts --depth=1
@@ -88,28 +88,29 @@ case ${machine} in
         # sudo tlmgr update --self && sudo tlmgr update --all
 
         echo "\033[0;31m Installing Angular, NestJS CLI, Firebase-Tools, Ionic\033[0m"
-        npm install -g @angular/cli @nestjs/cli serve strapi
-        # npm i -g firebase-tools @ionic/cli
+        npm install -g @angular/cli 
+        # npm i -g firebase-tools @ionic/cli @nestjs/cli serve strapi
 
         echo "\033[0;31m Installing XCode command line tools\033[0m"
         xcode-select --install
 
         # echo "\033[0;31m Installing Python\033[0m"
-        brew install python
-        echo 'export PATH="/usr/local/opt/python/libexec/bin:$PATH"' >> ~/.zshrc
+        # brew install python
+        # echo 'export PATH="/usr/local/opt/python/libexec/bin:$PATH"' >> ~/.zshrc
 
         # Flutter
         echo "\033[0;31m Install Flutter\033[0m"
         mkdir ~/Development
-        git clone https://github.com/flutter/flutter.git ~/Development/flutter
-        cd ~/Development/flutter
+        git clone https://github.com/flutter/flutter.git -b stable ~/Development/flutter
+        cd ~/Software/flutter
         git checkout stable
-        echo 'export PATH=$PATH:~/Development/flutter/bin' >> ~/.zshrc
-        . ~/.zshrc
+        echo 'export FLUTTER_DIR="$HOME/Software/flutter/bin"' >> ~/.zshrc
+        echo 'export PATH="$PATH:$FLUTTER_DIR"' >> ~/.zshrc
+        source $HOME/.zshrc
         cd ~/
 
-        brew tap homebrew/cask-fonts
-        brew install --cask font-fira-code
+        # brew tap homebrew/cask-fonts
+        # brew install --cask font-fira-code
 
         #Installing java
         # brew tap AdoptOpenJDK/openjdk
@@ -117,22 +118,22 @@ case ${machine} in
         # brew install --cask adoptopenjdk15-openj9
 
         #Quality of Life installations uncomment the ones you want to install
-        brew install --cask stats
+        # brew install --cask stats
 
-        echo "\033[0;31m Install VS Code\033[0m"
-        curl -L https://code.visualstudio.com/sha/download\?build\=stable\&os\=darwin-universal -o ~/Downloads/VSCode-darwin-universal.zip
-        unzip ~/Downloads/VSCode-darwin-universal.zip -d ~/Downloads
-        mv ~/Downloads/Visual\ Studio\ Code.app ~/Applications
+        # echo "\033[0;31m Install VS Code\033[0m"
+        # curl -L https://code.visualstudio.com/sha/download\?build\=stable\&os\=darwin-universal -o ~/Downloads/VSCode-darwin-universal.zip
+        # unzip ~/Downloads/VSCode-darwin-universal.zip -d ~/Downloads
+        # mv ~/Downloads/Visual\ Studio\ Code.app ~/Applications
 
-        echo "\033[0;31m Install Azure Data Studio\033[0m"
-        curl -L https://go.microsoft.com/fwlink/?linkid=2176807 -o ~/Downloads/Azure-Data-Studio.zip
-        unzip ~/Downloads/Azure-Data-Studio.zip -d ~/Downloads
-        mv ~/Downloads/Azure\ Data\ Studio.app ~/Applications
+        # echo "\033[0;31m Install Azure Data Studio\033[0m"
+        # curl -L https://go.microsoft.com/fwlink/?linkid=2176807 -o ~/Downloads/Azure-Data-Studio.zip
+        # unzip ~/Downloads/Azure-Data-Studio.zip -d ~/Downloads
+        # mv ~/Downloads/Azure\ Data\ Studio.app ~/Applications
 
         # Does not work as expected find better way to install dotnet
         # echo "\033[0;31m Install DotNet\033[0m"
         # sh -c "$(wget -O- https://dotnet.microsoft.com/download/dotnet/scripts/v1/dotnet-install.sh)"
         # echo 'export PATH="/usr/local/share/dotnet:$PATH"' >> ~/.zshrc
         # echo 'export PATH="$PATH:$HOME/.dotnet/tools/"' >> ~/.zshrc
-        dotnet tool install --global dotnet-ef
+        # dotnet tool install --global dotnet-ef
 esac
