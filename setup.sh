@@ -102,8 +102,6 @@ case ${machine} in
         echo "\033[0;31m Install Flutter\033[0m"
         mkdir ~/Development
         git clone https://github.com/flutter/flutter.git -b stable ~/Development/flutter
-        cd ~/Software/flutter
-        git checkout stable
         echo 'export FLUTTER_DIR="$HOME/Software/flutter/bin"' >> ~/.zshrc
         echo 'export PATH="$PATH:$FLUTTER_DIR"' >> ~/.zshrc
 		echo 'export ANDROID_HOME="$HOME/Library/Android/sdk"' >> ~/.zshrc
