@@ -49,8 +49,8 @@ case ${machine} in
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
         sed -i '' 's/plugins=(/plugins=(zsh-autosuggestions /' ~/.zshrc
         sed -i '' 's/plugins=(/plugins=(zsh-syntax-highlighting /' ~/.zshrc
-        #set agnoster theme comment out if you want default
-        sed -i '' 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' ~/.zshrc
+        ## set agnoster theme comment out if you want default
+        # sed -i '' 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' ~/.zshrc
 
         sed -i '' 's/plugins=(/plugins=(git /' ~/.zshrc
         sed -i '' 's/plugins=(/plugins=(macos /' ~/.zshrc
@@ -68,9 +68,9 @@ case ${machine} in
         wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
         source $HOME/.zshrc
 
-        ## install node v14 latest latest
-        # nvm install --lts=erbiumx
-        nvm install --lts=fermium
+        ## install node v16 latest latest
+        # nvm install --lts=fermium
+        nvm install --lts=gallium #V16
         nvm use --lts
         source $HOME/.zshrc
 
@@ -83,8 +83,8 @@ case ${machine} in
 
         # echo "\n[92mInstalling Latex for use with VS Code"
         # brew install --cask mactex-no-gui
-        # test if this works in shell
-        # . ~/.zshrc
+        # # test if this works in shell
+        # source ~/.zshrc
         # sudo tlmgr update --self && sudo tlmgr update --all
 
         echo "\033[0;31m Installing Angular, NestJS CLI, Firebase-Tools, Ionic\033[0m"
