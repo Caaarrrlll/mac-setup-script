@@ -20,18 +20,16 @@ case ${machine} in
         sed -i 's/plugins=(/plugins=(zsh-syntax-highlighting /' ~/.zshrc
         # Set theme to agnoster
         sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' ~/.zshrc
-        sed -i '$ a export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"' ~/.zshrc
-        sed -i '$ a [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' ~/.zshrc
+
         source ~/.zshrc
 
         # install node v10 & v12 latest latest
-        nvm install --lts=dubnium
-        nvm install --lts=erbium
-        nvm use --lts
+        nvm install 22
+        nvm use 22
         source ~/.zshrc
 
-        echo "\033[0;31m Installing Angular, NestJS CLI, Firebase-Tools, Ionic\033[0m"
-        npm install -g @angular/cli @nestjs/cli firebase-tools @ionic/cli;;
+        echo "\033[0;31m Installing Angular, NestJS CLI, Firebase-Tools\033[0m"
+        npm install -g @angular/cli @nestjs/cli firebase-tools;
 #########################################################################################################################################################
     Mac*) echo "macOS setup script"
         # install homebrew
