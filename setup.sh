@@ -12,7 +12,9 @@ case ${machine} in
     Cygwin*)  echo "Not setup for windows";;
     MinGw*) echo "Not setup for windows";;
     Linux*) echo "This will only work on systems that use aptitude!!!";
-        sudo apt-get install zsh git
+        sudo apt-get install zsh git fonts-powerline
+
+        echo "\033[0;31m Installing oh-my-zsh\033[0m"
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
         git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
@@ -24,6 +26,10 @@ case ${machine} in
         source ~/.zshrc
 
         # install node v10 & v12 latest latest
+        echo "\033[0;31m Installing nvm\033[0m"
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+        source ~/.zshrc
+
         nvm install 22
         nvm use 22
         source ~/.zshrc
